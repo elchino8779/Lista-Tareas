@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <AgregarTabla nombreIngresado={nombreIngresado}/>
-      <ContenedorTablas nombreTabla={nombreTabla} setNombreTabla={setNombreTabla}/>
+      <ContenedorTablas nombreTabla={nombreTabla} setNombreTabla={setNombreTabla} />
     </>
   )
 }

@@ -6,12 +6,12 @@ import { Item } from '../item/Item';
 export const Tabla = (props) => {
 
   const [nombreTabla, setNombreTabla] = useState(props.nombre);
-  const [editarAgregar, setEditarAgregar] = useState("null");
+  const [editarAgregar, setEditarAgregar] = useState(null);
   const [placeholder, setPlaceholder] = useState("");
   const [inputEditarAgregarValue, setInputEditarAgregarValue] = useState("");
   const [visibilidad, setVisibilidad] = useState(null);
   const [aceptarCancelar, setAceptarCancelar] = useState(false);
-  const [listaTareas, setListaTareas] = useState(props.lista);
+  const [listaTareas, setListaTareas] = useState(JSON.parse(localStorage.getItem(props.id)));
 
   const inputAgregarEditarContainer = useRef();
 
@@ -27,11 +27,10 @@ export const Tabla = (props) => {
     }
     if (editarAgregar == "agregar") {
       if (inputEditarAgregarValue != "") {
-        let newLista = [...listaTareas, {tarea: inputEditarAgregarValue, id: Date.now()}];
+        let newLista = [...listaTareas, { tarea: inputEditarAgregarValue, id: Date.now()}];
         setListaTareas(newLista);
       }
     }
-
     setAceptarCancelar(null);
 
   }, [aceptarCancelar]);
@@ -64,7 +63,10 @@ export const Tabla = (props) => {
   }, [visibilidad]);
 
   useEffect(() => {
-    console.log(listaTareas)
+
+    localStorage.setItem(props.id, JSON.stringify(listaTareas));
+
+
   }, [listaTareas])
 
 
@@ -94,6 +96,7 @@ export const Tabla = (props) => {
         <ReactSortable
           className='contenedor-items'
           ghostClass='ghostClass'
+          handle='.bi-grip-vertical'
           swapThreshold={0.1}
           group="TodoList"
           list={listaTareas}

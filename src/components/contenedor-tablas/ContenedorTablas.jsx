@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { ReactSortable } from "react-sortablejs";
 import "./ContenedorTablas.scss"
 import { Tabla } from '../Tabla/Tabla';
 
@@ -10,10 +9,18 @@ export const ContenedorTablas = ({ nombreTabla, setNombreTabla }) => {
   const [actualizarNombre, setActualizarNombre] = useState([]);
 
   useEffect(() => {
+    if(localStorage.getItem("tablas")){
+      setCantidadTablas(JSON.parse(localStorage.getItem("tablas")))
+    }
+  },[])
+
+  useEffect(() => {
 
     const actualizarTablas = () => {
       if (nombreTabla.length != "") {
-        let nuevoArray = [...cantidadTablas, { nombre: nombreTabla, id: Date.now(), lista: [] }]
+        let idTabla = Date.now();
+        localStorage.setItem(idTabla, JSON.stringify([]));
+        let nuevoArray = [...cantidadTablas, { nombre: nombreTabla, id: idTabla, lista: JSON.parse(localStorage.getItem(idTabla))}]
         setCantidadTablas(nuevoArray);
         setNombreTabla("");
       }
@@ -26,27 +33,28 @@ export const ContenedorTablas = ({ nombreTabla, setNombreTabla }) => {
   useEffect(() => {
 
     const visibilitiContenedor = () => {
-      if(cantidadTablas.length != 0){
+      if (cantidadTablas.length != 0) {
         contenedorTabla.current.classList.add("active");
+        localStorage.setItem('tablas', JSON.stringify(cantidadTablas));
       }
     };
     visibilitiContenedor();
-
-    console.log(cantidadTablas);
 
   }, [cantidadTablas])
 
 
   useEffect(() => {
-    if(actualizarNombre.length != 0){
-      for(let i = 0; i < cantidadTablas.length; i++){
-        if(cantidadTablas[i].id == actualizarNombre[0].id){
+    if (actualizarNombre.length != 0) {
+      for (let i = 0; i < cantidadTablas.length; i++) {
+        if (cantidadTablas[i].id == actualizarNombre[0].id) {
           cantidadTablas[i].nombre = actualizarNombre[0].nombre;
         }
       }
+      localStorage.setItem('tablas', JSON.stringify(cantidadTablas));
     }
 
   }, [actualizarNombre]);
+
 
 
   return (
