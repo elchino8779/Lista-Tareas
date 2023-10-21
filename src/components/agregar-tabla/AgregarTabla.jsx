@@ -31,7 +31,7 @@ export const AgregarTabla = ({nombreIngresado}) => {
           <p>Agregar tabla</p>
         </button>
         <form ref={containerInput} className='container-inputs' >
-          <input type="text" placeholder="Nombre de la tabla" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+          <input type="text" name='agregar-tabla' placeholder="Nombre de la tabla" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
           <div className="container-botones">
             <button className='aceptar' onClick={(e) => {cambiarVisibilidad(e); nombreIngresado(inputValue)}}>Aceptar</button>
             <button className='cancelar' onClick={(e) => {cambiarVisibilidad(e)}}>Cancelar</button>

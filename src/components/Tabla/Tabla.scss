@@ -15,11 +15,11 @@
 .tabla {
   width: 350px;
   max-height: 600px;
+  position: relative;
   /*height: 500px;*/
   background-color: $violeta-60;
   border-radius: 0.2rem;
   padding: 10px;
-  overflow-x: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,7 +27,7 @@
   gap: 5px;
   box-shadow: 0px 0px 15px $gris-70;
   animation-name: table-in;
-  animation-duration: 0.3s;
+  animation-duration: 0.2s;
   animation-iteration-count: initial;
   align-self: flex-start;
 
@@ -42,6 +42,29 @@
 ::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.2);
 }
+
+  .eliminar-tabla{
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -11px;
+    right: -11px;
+
+    .bi-x-circle-fill{
+      color: $rojo-40;
+      transition: 0.2s;
+
+      &:hover{
+        transform: scale(1.2);
+        filter: drop-shadow(0px 0px 1px $rojo-70);
+      }
+    }
+  }
 
   .titulo {
     min-width: 100%;

@@ -11,7 +11,7 @@ export const Tabla = (props) => {
   const [inputEditarAgregarValue, setInputEditarAgregarValue] = useState("");
   const [visibilidad, setVisibilidad] = useState(null);
   const [aceptarCancelar, setAceptarCancelar] = useState(false);
-  const [listaTareas, setListaTareas] = useState(JSON.parse(localStorage.getItem(props.id)));
+  const [listaTareas, setListaTareas] = useState(JSON.parse(localStorage.getItem(props.id)) || []);
 
   const inputAgregarEditarContainer = useRef();
 
@@ -27,7 +27,7 @@ export const Tabla = (props) => {
     }
     if (editarAgregar == "agregar") {
       if (inputEditarAgregarValue != "") {
-        let newLista = [...listaTareas, { tarea: inputEditarAgregarValue, id: Date.now()}];
+        let newLista = [...listaTareas, { tarea: inputEditarAgregarValue, id: Date.now() }];
         setListaTareas(newLista);
       }
     }
@@ -66,13 +66,14 @@ export const Tabla = (props) => {
 
     localStorage.setItem(props.id, JSON.stringify(listaTareas));
 
-
   }, [listaTareas])
 
 
   return (
     <>
       <div className='tabla'>
+        <button className='eliminar-tabla'><i className="bi bi-x-circle-fill" onClick={() => { props.setEliminarTabla(props.id) }}></i></button>
+
         <div className="titulo">
 
           <div className="titulo-botones">
@@ -84,7 +85,7 @@ export const Tabla = (props) => {
           </div>
 
           <form ref={inputAgregarEditarContainer} className='container-editar-agregar' onSubmit={(e) => { e.preventDefault(); setVisibilidad(false); setAceptarCancelar(true) }}>
-            <input className='input-editar-agregar' value={inputEditarAgregarValue} placeholder={placeholder} type="text" onChange={(e) => { setInputEditarAgregarValue(e.target.value) }} />
+            <input className='input-editar-agregar' name='agregar-editar' value={inputEditarAgregarValue} placeholder={placeholder} type="text" onChange={(e) => { setInputEditarAgregarValue(e.target.value) }} />
             <div className="icons-container-editar-agregar">
               <i className="bi bi-check-circle-fill" onClick={(e) => { setVisibilidad(false); setAceptarCancelar(true) }}></i>
               <i className="bi bi-x-circle-fill" onClick={(e) => { setVisibilidad(false); setInputEditarAgregarValue('') }}></i>

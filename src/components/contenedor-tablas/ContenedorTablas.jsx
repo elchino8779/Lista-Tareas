@@ -7,12 +7,16 @@ export const ContenedorTablas = ({ nombreTabla, setNombreTabla }) => {
   const [cantidadTablas, setCantidadTablas] = useState([]);
   const contenedorTabla = useRef();
   const [actualizarNombre, setActualizarNombre] = useState([]);
+  const [eliminarTabla, setEliminarTabla] = useState(null);
 
   useEffect(() => {
-    if(localStorage.getItem("tablas")){
+    if (localStorage.getItem("tablas")) {
       setCantidadTablas(JSON.parse(localStorage.getItem("tablas")))
     }
-  },[])
+    else{
+      localStorage.setItem("tablas", JSON.stringify([]));
+    }
+  }, [])
 
   useEffect(() => {
 
@@ -20,7 +24,7 @@ export const ContenedorTablas = ({ nombreTabla, setNombreTabla }) => {
       if (nombreTabla.length != "") {
         let idTabla = Date.now();
         localStorage.setItem(idTabla, JSON.stringify([]));
-        let nuevoArray = [...cantidadTablas, { nombre: nombreTabla, id: idTabla, lista: JSON.parse(localStorage.getItem(idTabla))}]
+        let nuevoArray = [...cantidadTablas, { nombre: nombreTabla, id: idTabla, lista: JSON.parse(localStorage.getItem(idTabla)) }]
         setCantidadTablas(nuevoArray);
         setNombreTabla("");
       }
@@ -32,13 +36,19 @@ export const ContenedorTablas = ({ nombreTabla, setNombreTabla }) => {
 
   useEffect(() => {
 
-    const visibilitiContenedor = () => {
-      if (cantidadTablas.length != 0) {
-        contenedorTabla.current.classList.add("active");
-        localStorage.setItem('tablas', JSON.stringify(cantidadTablas));
-      }
-    };
-    visibilitiContenedor();
+    setTimeout(() => {
+      const visibilitiContenedor = () => {
+        if (cantidadTablas.length != 0) {
+          contenedorTabla.current.classList.add("active");
+          localStorage.setItem('tablas', JSON.stringify(cantidadTablas));
+        }else{
+          contenedorTabla.current.classList.remove("active");
+          localStorage.setItem("tablas", JSON.stringify([]));
+        }
+      };
+      visibilitiContenedor();
+      
+    });
 
   }, [cantidadTablas])
 
@@ -55,11 +65,29 @@ export const ContenedorTablas = ({ nombreTabla, setNombreTabla }) => {
 
   }, [actualizarNombre]);
 
+  useEffect(() => {
+
+    if(eliminarTabla != null){
+      let indice;
+      for(let i = 0; i < cantidadTablas.length; i++){
+        if(cantidadTablas[i].id == eliminarTabla){
+          indice = i;
+        }
+      }
+
+      let nuevoArray = cantidadTablas.filter((el, pos) => pos != indice);
+      localStorage.removeItem(eliminarTabla);
+      setCantidadTablas(nuevoArray);
+      localStorage.setItem('tablas', JSON.stringify(cantidadTablas));
+
+    }
+
+  }, [eliminarTabla])
 
 
   return (
     <div ref={contenedorTabla} className='contenedor-tablas'>
-      {cantidadTablas.map(el => <Tabla key={el.id} nombre={el.nombre} id={el.id} lista={el.lista} setActualizarNombre={setActualizarNombre} ></Tabla>)}
+      {cantidadTablas.map(el => <Tabla key={el.id} nombre={el.nombre} id={el.id} lista={el.lista} setActualizarNombre={setActualizarNombre} setEliminarTabla={setEliminarTabla}></Tabla>)}
     </div>
   )
 }
