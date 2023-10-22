@@ -12,6 +12,8 @@ export const Tabla = (props) => {
   const [visibilidad, setVisibilidad] = useState(null);
   const [aceptarCancelar, setAceptarCancelar] = useState(false);
   const [listaTareas, setListaTareas] = useState(JSON.parse(localStorage.getItem(props.id)) || []);
+  const [detallesTarea, setDetallesTarea] = useState("");
+  const [eliminarTarea, setEliminarTarea] = useState(null);
 
   const inputAgregarEditarContainer = useRef();
 
@@ -27,7 +29,7 @@ export const Tabla = (props) => {
     }
     if (editarAgregar == "agregar") {
       if (inputEditarAgregarValue != "") {
-        let newLista = [...listaTareas, { tarea: inputEditarAgregarValue, id: Date.now() }];
+        let newLista = [...listaTareas, { tarea: inputEditarAgregarValue, detalles: JSON.parse(localStorage.getItem(props.detalles)) || "", id: Date.now() }];
         setListaTareas(newLista);
       }
     }
@@ -68,10 +70,34 @@ export const Tabla = (props) => {
 
   }, [listaTareas])
 
+  useEffect(() => {
+
+    for(let i = 0; i < listaTareas.length; i++){
+      if(listaTareas[i].id == detallesTarea.id){
+        listaTareas[i].detalles = detallesTarea.detalles;
+      }
+    }
+    localStorage.setItem(props.id, JSON.stringify(listaTareas));
+
+  }, [detallesTarea]);
+
+  useEffect(() => {
+
+    if(eliminarTarea != null){
+      for(let i = 0; i < listaTareas.length; i++){
+        if(listaTareas[i].id == eliminarTarea){
+          let nuevaLista = listaTareas.filter(el => el.id != eliminarTarea);
+          setListaTareas(nuevaLista);
+        }
+      }
+    }
+
+  }, [eliminarTarea])
+
 
   return (
     <>
-      <div className='tabla'>
+      <div className={`tabla ${props.color}`}>
         <button className='eliminar-tabla'><i className="bi bi-x-circle-fill" onClick={() => { props.setEliminarTabla(props.id) }}></i></button>
 
         <div className="titulo">
@@ -105,7 +131,7 @@ export const Tabla = (props) => {
           animation={400}
           delay={4}
         >
-          {listaTareas.map(el => <Item key={el.id} tarea={el.tarea} />)}
+          {listaTareas.map(el => <Item key={el.id} id={el.id} tarea={el.tarea} detalles={el.detalles} setDetallesTarea={setDetallesTarea} setEliminarTarea={setEliminarTarea}/>)}
         </ReactSortable>
       </div>
     </>

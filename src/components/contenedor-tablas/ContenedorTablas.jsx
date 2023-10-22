@@ -20,11 +20,17 @@ export const ContenedorTablas = ({ nombreTabla, setNombreTabla }) => {
 
   useEffect(() => {
 
+    const colorDeTabla = () => {
+      let colores = ["rojo", "azul", "verde", "violeta", "naranja", "amarillo", "celeste", "gris"];
+      let color = colores[Math.floor(Math.random() * 8)];
+      return color;
+    }
+
     const actualizarTablas = () => {
       if (nombreTabla.length != "") {
         let idTabla = Date.now();
         localStorage.setItem(idTabla, JSON.stringify([]));
-        let nuevoArray = [...cantidadTablas, { nombre: nombreTabla, id: idTabla, lista: JSON.parse(localStorage.getItem(idTabla)) }]
+        let nuevoArray = [...cantidadTablas, { nombre: nombreTabla, id: idTabla, lista: JSON.parse(localStorage.getItem(idTabla)), color: colorDeTabla()}]
         setCantidadTablas(nuevoArray);
         setNombreTabla("");
       }
@@ -87,7 +93,7 @@ export const ContenedorTablas = ({ nombreTabla, setNombreTabla }) => {
 
   return (
     <div ref={contenedorTabla} className='contenedor-tablas'>
-      {cantidadTablas.map(el => <Tabla key={el.id} nombre={el.nombre} id={el.id} lista={el.lista} setActualizarNombre={setActualizarNombre} setEliminarTabla={setEliminarTabla}></Tabla>)}
+      {cantidadTablas.map(el => <Tabla key={el.id} nombre={el.nombre} id={el.id} lista={el.lista} color={el.color} setActualizarNombre={setActualizarNombre} setEliminarTabla={setEliminarTabla}></Tabla>)}
     </div>
   )
 }
