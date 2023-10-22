@@ -10,20 +10,16 @@ export const ContenedorTablas = ({ nombreTabla, setNombreTabla }) => {
   const [eliminarTabla, setEliminarTabla] = useState(null);
 
   useEffect(() => {
-    if (localStorage.getItem("tablas")) {
-      setCantidadTablas(JSON.parse(localStorage.getItem("tablas")))
-    }
-    else{
-      localStorage.setItem("tablas", JSON.stringify([]));
-    }
+    (localStorage.getItem("tablas"))
+    ? setCantidadTablas(JSON.parse(localStorage.getItem("tablas"))) 
+    : localStorage.setItem("tablas", JSON.stringify([]));
   }, [])
 
   useEffect(() => {
 
     const colorDeTabla = () => {
       let colores = ["rojo", "azul", "verde", "violeta", "naranja", "amarillo", "celeste", "gris"];
-      let color = colores[Math.floor(Math.random() * 8)];
-      return color;
+      return colores[Math.floor(Math.random() * 8)];
     }
 
     const actualizarTablas = () => {

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './App.scss'
 import { AgregarTabla } from './components/agregar-tabla/AgregarTabla'
 import { ContenedorTablas } from './components/contenedor-tablas/ContenedorTablas'

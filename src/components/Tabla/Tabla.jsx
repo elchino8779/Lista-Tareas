@@ -105,8 +105,8 @@ export const Tabla = (props) => {
           <div className="titulo-botones">
             <p>{nombreTabla}</p>
             <div className="icons-container">
-              <i className="bi bi-pencil-square" onClick={(e) => { setEditarAgregar("editar"); setVisibilidad(true) }}></i>
-              <i className="bi bi-file-earmark-plus" onClick={(e) => { setEditarAgregar("agregar"); setVisibilidad(true) }}></i>
+              <span className='boton-editar-nombre'><i className="bi bi-pencil-square" onClick={(e) => { setEditarAgregar("editar"); setVisibilidad(true) }}></i></span>
+              <span className='boton-agregar-tarea'><i className="bi bi-file-earmark-plus" onClick={(e) => { setEditarAgregar("agregar"); setVisibilidad(true) }}></i></span>
             </div>
           </div>
 

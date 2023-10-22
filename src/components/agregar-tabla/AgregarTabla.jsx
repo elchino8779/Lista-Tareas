@@ -10,13 +10,13 @@ export const AgregarTabla = ({nombreIngresado}) => {
 
   const cambiarVisibilidad = (e) => {
     e.preventDefault();
-    (isVisible) ? setIsVisible(false) : setIsVisible(true);
+    (isVisible)
+    ? setIsVisible(false)
+    : setIsVisible(true);
   }
 
   useEffect(() => {
-    if(isVisible){
-      containerInput.current.classList.add("active");
-    }
+    if(isVisible) containerInput.current.classList.add("active");
     else{
       containerInput.current.classList.remove("active");
       setInputValue('');
