@@ -1,0 +1,50 @@
+@import '../../assets/colores-pastel.scss';
+
+.titulo-principal{
+  position: fixed;
+  width: 260px;
+  height: 45px;
+  right: -90px;
+  top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  background-color: $celeste-50;
+  border-radius: 0.5rem 0 0 0.5rem;
+  box-shadow: 0px 0px 5px $celeste-50;
+  content-visibility: auto;
+  z-index: 1000;
+  user-select: none;
+  transition: 0.3s;
+
+  &:hover{
+    right: -2px;
+  }
+
+  h1{
+    font-size: 1.2rem;    
+  }
+
+  .contenedor-enlaces{
+    width: 55px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    a{
+
+      i{
+        font-size: 1.2rem;
+        color: #fff;
+        transition: 0.3s;
+
+        &:hover{
+          color: $gris-60;
+        }
+      }
+    }
+  }
+}
