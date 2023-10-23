@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "host": "vite --host"
   },
+  "homepage": "https://elchino8779.github.io/Lista-Tareas/",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
