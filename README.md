@@ -1,65 +1,49 @@
 <div id="titulo" align="center">
-    <h1 align="center">Lista de tareas</h1>
+    <h1>Lista de Tareas</h1>
 </div>
 
 ---
 
-<div id="Caracteristicas" align="center">
-    <h2 align="center"> 🛠️ Especificaciones:</h2>
-    <h3>
-        Este proyecto fue creado con fines de practica<br>
-        Desarrollado en ReactJs y Sass<br>
-        Lista de tablas con ingreso de tareas por items<br>
-    </h3>
+<div id="datos">
+    <h3>✔️ Datos:</h3>
+    <p>
+	🔹 Este proyecto fue creado con fines de practica <br>
+	🔹 Desarrollado en ReactJs y Sass<br>
+	🔹 Lista de tablas con ingreso de tareas por items<br>
+    </p>
 </div>
 
 ---
 
-<div id="datos" align="center">
-    <h2>💾 Datos:</h2>
-    <br>
-        Permite agregado y eliminacion de tablas e intems indefinidos<br>
-        Edicion de nombres y detalles<br>
-        Intercambio agil de items entre diferentes tablas<br>
-        Persistencia de datos automatica en localStorage<br>
-        Totalmente responsivo.<br>
+<div id="caracteristicas">
+    <h3>⚙️ Características:</h3>
+    <p>
+        🔸 Permite agregado y eliminación de tablas e ítems indefinidos <br>
+        🔸 Edición de nombres de tablas y detalles de items <br>
+        🔸 Intercambio de items entre tablas <br>
+        🔸 Persistencia de datos en localStorage <br>
+    </p>
 </div>
 
 ---
 
 <div id="capturas" align="center">
+    <h3 align="left"> 📷 Capturas:</h3>
+    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/ShotsImages/ListaDeTareas/img01.png?raw=true" alt="Cap1" width="800">
     <br>
-    <h2> 📷 Capturas:</h2>
+    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/ShotsImages/ListaDeTareas/img02.png?raw=true" alt="Cap2" width="800">
     <br>
-    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/Lista-de-tareas/img-01.png?raw=true" alt="Cap1" width="700">
+    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/ShotsImages/ListaDeTareas/img03.png?raw=true" alt="Cap3" width="800">
     <br>
+    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/ShotsImages/ListaDeTareas/img04.png?raw=true" alt="Cap4" width="800">
     <br>
-    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/Lista-de-tareas/img-02.png?raw=true" alt="Cap2" width="700">
+    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/ShotsImages/ListaDeTareas/img05.png?raw=true" alt="Cap5" width="800">
     <br>
+    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/ShotsImages/ListaDeTareas/img06.png?raw=true" alt="Cap6" width="800">
     <br>
-    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/Lista-de-tareas/img-03.png?raw=true" alt="Cap3" width="700">
+    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/ShotsImages/ListaDeTareas/img07.png?raw=true" alt="Cap7" width="800">
     <br>
+    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/ShotsImages/ListaDeTareas/img08.png?raw=true" alt="Cap8" width="800">
     <br>
-    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/Lista-de-tareas/img-04.png?raw=true" alt="Cap4" width="700">
-    <br>
-    <br>
-    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/Lista-de-tareas/img-05.png?raw=true" alt="Cap5" width="700">
-    <br>
-    <br>
-    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/Lista-de-tareas/img-06.png?raw=true" alt="Cap6" width="700">
-    <br>
-    <br>
-    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/Lista-de-tareas/img-07.png?raw=true" alt="Cap7" width="700">
-    <br>
-    <br>
-    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/Lista-de-tareas/img-08.png?raw=true" alt="Cap8" width="700">
-    <br>
-    <br>
-    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/Lista-de-tareas/img-09.png?raw=true" alt="Cap9" width="700">
-    <br>
-    <br>
-    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/Lista-de-tareas/img-10.png?raw=true" alt="Cap10" width="400">
-    <br>
-    <br>
-    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/Lista-de-tareas/img-11.png?raw=true" alt="Cap11" width="400">
+    <img src="https://github.com/elchino8779/ImagenesGitHub/blob/main/ShotsImages/ListaDeTareas/img09.png?raw=true" alt="Cap9" width="800">
 </div>
